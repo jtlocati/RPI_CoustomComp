@@ -1,2 +1,5 @@
-opencv-python>=4.8
+# Raspberry Pi Zero 2 W build.
+# picamera2 should be installed via apt on Raspberry Pi OS:
+#   sudo apt install -y python3-picamera2
+# (It brings in libcamera and is awkward to install from pip on the Pi.)
 openai>=1.0
