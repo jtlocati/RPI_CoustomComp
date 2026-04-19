@@ -8,7 +8,7 @@ Special single-character inputs (type then press Enter):
         put the reply where a regular result would go.
   C  -> clear the whole display.
 
-API key: read from the environment variable ``OpenAPI``.
+API key: read from the environment variable ``OpenAPI``..
 """
 
 import base64
