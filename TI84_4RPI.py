@@ -1,15 +1,3 @@
-"""
-TI-84-style calculator with AI vision mode (Raspberry Pi Zero 2 W build).
-
-Normal mode: type math expressions and press Enter.
-
-Special single-character inputs (type then press Enter):
-  P  -> snap a picture with the Pi camera and send it to OpenAI,
-        put the reply where a regular result would go.
-  C  -> clear the whole display.
-
-API key: read from the environment variable ``OpenAPI``..
-"""
 
 import base64
 import math
@@ -65,6 +53,18 @@ def build_ui(root):
     root.configure(bg=SHELL_BG)
     root.geometry("560x460")
     root.minsize(420, 340)
+
+    # Boot fullscreen on the Pi. F11 toggles, Ctrl+Q exits.
+    root.attributes("-fullscreen", True)
+    root.config(cursor="none")  # hide mouse pointer for kiosk feel
+
+    def _toggle_fullscreen(_e=None):
+        is_full = bool(root.attributes("-fullscreen"))
+        root.attributes("-fullscreen", not is_full)
+        root.config(cursor="" if is_full else "none")
+
+    root.bind("<F11>",     _toggle_fullscreen)
+    root.bind("<Control-q>", lambda e: root.destroy())
 
     lcd_font    = font.Font(family="Courier", size=16, weight="bold")
     status_font = font.Font(family="Courier", size=10, weight="bold")
