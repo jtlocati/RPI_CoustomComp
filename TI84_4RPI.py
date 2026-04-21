@@ -230,16 +230,6 @@ def start_ai_mode(state):
 
 
 def capture_image():
-    """
-    Take exactly one still photo and return its JPEG bytes.
-    Mirrors the known-good snippet:
-        picam2 = Picamera2()
-        picam2.configure(picam2.create_still_configuration())
-        picam2.start()
-        time.sleep(2)
-        picam2.capture_file("test.jpg")
-    No preview, no extra keypress -- just snap.
-    """
     picam2 = None
     tmp_path = None
     try:
